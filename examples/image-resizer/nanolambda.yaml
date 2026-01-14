@@ -1,0 +1,3 @@
+name: image-resizer
+runtime: python
+timeout: 30
