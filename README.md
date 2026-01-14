@@ -71,3 +71,20 @@ python web/dashboard/serve.py
 # open in browser
 .\nanolambda.exe dashboard
 ```
+
+## how the ai works
+1. **collect:** prometheus scrapes traffic metrics every 5s.
+2. **learn:** prophet trains on the last 7 days of history (simulated in demo).
+3. **predict:** every 5 mins, it forecasts the next 10 mins.
+4. **act:** if a spike is predicted, it calls the gateway to pre-warm containers.
+
+## project structure
+```
+├── cmd/
+│   ├── cli/        # nanolambda command
+│   └── gateway/    # the main server
+├── pkg/            # shared go libraries
+├── prophet/        # python ai service
+├── runtime/        # function runners
+└── web/            # dashboard
+```
