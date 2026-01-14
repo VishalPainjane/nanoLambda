@@ -1,0 +1,24 @@
+# Binaries
+*.exe
+*.dll
+
+# Logs
+*.log
+*.err
+
+# Data
+data/
+nanolambda.db
+
+# Temporary/User Functions (usually ignored in platform repo, but we keep examples)
+# my-func/ 
+# hello-world/
+
+# IDE/System
+.vscode/
+.idea/
+.DS_Store
+
+# Context files (from prompt)
+examples.txt
+ps.txt
