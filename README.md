@@ -37,7 +37,7 @@ docker build -t nanolambda/base-python:3.11 runtime/python
 # start the gateway (keep this running)
 # in a new terminal:
 go run ./cmd/gateway
-# or if compiled
+# or if compiled:
 # .\gateway.exe
 ```
 
@@ -51,4 +51,23 @@ go build -o nanolambda.exe ./cmd/cli
 
 # deploy it
 .\nanolambda.exe deploy hello-world
+```
+
+### 3. invoke it
+```bash
+# cold start (first time ~2s)
+curl -x post http://localhost:8080/function/hello-world -d '{"name": "developer"}'
+
+# hot start (second time ~50ms)
+curl -x post http://localhost:8080/function/hello-world -d '{"name": "developer"}'
+```
+
+### 4. watch the magic
+open the dashboard to see real-time metrics:
+```bash
+# start dashboard server (in new terminal)
+python web/dashboard/serve.py
+
+# open in browser
+.\nanolambda.exe dashboard
 ```
