@@ -1,0 +1,5 @@
+prophet
+requests
+prometheus-api-client
+schedule
+pandas
