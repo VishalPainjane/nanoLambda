@@ -18,3 +18,37 @@ nanolambda is a research-grade serverless platform that uses ai to predict traff
 - **gateway (go):** reverse proxy, container manager, and load balancer.
 - **intelligence (python):** prophet model + prometheus metrics.
 - **runtime (docker):** isolated execution environments for python functions.
+
+## quick start
+
+### prerequisites
+- docker & docker compose
+- go 1.21+
+- python 3.10+
+
+### 1. start the platform
+```bash
+# start support services (prometheus, ai)
+docker-compose up -d
+
+# build the base runtime image (one time)
+docker build -t nanolambda/base-python:3.11 runtime/python
+
+# start the gateway (keep this running)
+# in a new terminal:
+go run ./cmd/gateway
+# or if compiled
+# .\gateway.exe
+```
+
+### 2. deploy a function
+```bash
+# build the cli
+go build -o nanolambda.exe ./cmd/cli
+
+# initialize a new function
+.\nanolambda.exe init hello-world
+
+# deploy it
+.\nanolambda.exe deploy hello-world
+```
